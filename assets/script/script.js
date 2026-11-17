@@ -1,67 +1,67 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const botaoCompartilhar = document.getElementById("botaoCompartilhar");
-    const cartaoNoticia = document.getElementById("cartaoNoticia");
+	const botaoCompartilhar = document.getElementById("botaoCompartilhar");
+	const cartaoNoticia = document.getElementById("cartaoNoticia");
 
-    if (!botaoCompartilhar || !cartaoNoticia) return;
+	if (!botaoCompartilhar || !cartaoNoticia) return;
 
-    botaoCompartilhar.addEventListener("click", async () => {
-        const icone = botaoCompartilhar.querySelector('img');
-        icone.src = "assets/img/progress_activity.svg";
-        botaoCompartilhar.disabled = true;
+	botaoCompartilhar.addEventListener("click", async () => {
+		const icone = botaoCompartilhar.querySelector('img');
+		icone.src = "assets/img/progress_activity.svg";
+		botaoCompartilhar.disabled = true;
 
-        try {
-            // Gera o canvas mantendo configurações otimizadas para redes sociais
-            const canvasCartao = await html2canvas(cartaoNoticia, {
-                useCORS: true,
-                scale: 2,
-                backgroundColor: "#ffffff",
-                onclone: (documentoClonado) => {
-                    const cartaoClonado = documentoClonado.getElementById("cartaoNoticia");
-                    if (cartaoClonado) {
-                        cartaoClonado.style.display = "flex";
-                    }
-                }
-            });
+		try {
+			// Gera o canvas mantendo configurações otimizadas para redes sociais
+			const canvasCartao = await html2canvas(cartaoNoticia, {
+				useCORS: true,
+				scale: 2,
+				backgroundColor: "#ffffff",
+				onclone: (documentoClonado) => {
+					const cartaoClonado = documentoClonado.getElementById("cartaoNoticia");
+					if (cartaoClonado) {
+						cartaoClonado.style.display = "flex";
+					}
+				}
+			});
 
-            // Converte o canvas para um formato de arquivo legível para compartilhamento
-            canvasCartao.toBlob(async (arquivoBlob) => {
-                if (!arquivoBlob) {
-                    throw new Error("Falha na geração do arquivo.");
-                }
+			// Converte o canvas para um formato de arquivo legível para compartilhamento
+			canvasCartao.toBlob(async (arquivoBlob) => {
+				if (!arquivoBlob) {
+					throw new Error("Falha na geração do arquivo.");
+				}
 
-                const arquivoImagem = new File(
-                    [arquivoBlob],
-                    "noticia_criciuma.png",
-                    { type: "image/png" }
-                );
+				const arquivoImagem = new File(
+					[arquivoBlob],
+					"noticia_criciuma.png",
+					{ type: "image/png" }
+				);
 
-                // Verifica se o navegador atual suporta compartilhamento de arquivos via Web Share API
-                if (navigator.canShare && navigator.canShare({ files: [arquivoImagem] })) {
-                    await navigator.share({
-                        title: "Dia do Professor em Criciúma",
-                        files: [arquivoImagem]
-                    });
-                } else {
-                    // Fallback para navegadores desktop ou que não suportam envio de arquivos nativo
-                    const desejaBaixarImagem = confirm("O compartilhamento direto não é suportado neste navegador. Deseja baixar o cartão gerado?");
-                    
-                    if (desejaBaixarImagem) {
-                        const linkBaixar = document.createElement("a");
-                        linkBaixar.href = URL.createObjectURL(arquivoBlob);
-                        linkBaixar.download = "/noticia_criciuma.png";
-                        linkBaixar.click();
-                    }
-                }
-            }, "image/png");
+				// Verifica se o navegador atual suporta compartilhamento de arquivos via Web Share API
+				if (navigator.canShare && navigator.canShare({ files: [arquivoImagem] })) {
+					await navigator.share({
+						title: "Dia do Professor em Criciúma",
+						files: [arquivoImagem]
+					});
+				} else {
+					// Fallback para navegadores desktop ou que não suportam envio de arquivos nativo
+					const desejaBaixarImagem = confirm("O compartilhamento direto não é suportado neste navegador. Deseja baixar o cartão gerado?");
 
-        } catch (erroGeral) {
-            console.error("Erro durante o processo de geração do cartão:", erroGeral);
-            alert("Não foi possível gerar a imagem para compartilhamento.");
-        } finally {
-            icone.src = 'assets/img/share.svg';
-            botaoCompartilhar.disabled = false;
-        }
-    });
+					if (desejaBaixarImagem) {
+						const linkBaixar = document.createElement("a");
+						linkBaixar.href = URL.createObjectURL(arquivoBlob);
+						linkBaixar.download = "/noticia_criciuma.png";
+						linkBaixar.click();
+					}
+				}
+			}, "image/png");
+
+		} catch (erroGeral) {
+			console.error("Erro durante o processo de geração do cartão:", erroGeral);
+			alert("Não foi possível gerar a imagem para compartilhamento.");
+		} finally {
+			icone.src = 'assets/img/share.svg';
+			botaoCompartilhar.disabled = false;
+		}
+	});
 });
 
 /**
@@ -72,6 +72,9 @@ const UI = {
 	playButton: document.getElementById("playButton"),
 	restartButton: document.getElementById("restartButton"),
 	progressBar: document.getElementById("progressBar"),
+	modais: document.querySelectorAll(".modal-customizada"),
+	botoesAbrirModal: document.querySelectorAll(".botao-abrir-modal"),
+	botoesFecharModal: document.querySelectorAll(".botao-fechar-modal"),
 	noticiaContainer: document.getElementById("noticiaUnicaContainer"),
 	avisoLeitura: document.querySelector(".aviso-leitura"),
 	swiperParallax: document.querySelector(".swiper-noticia-parallax"),
@@ -114,7 +117,7 @@ const LeitorDeVoz = (() => {
 	const reiniciarAudio = () => {
 		estadoAudio = "parado"; // Atualiza o nosso estado primeiro
 		window.speechSynthesis.cancel();
-		restaurarTextoAtual(); 
+		restaurarTextoAtual();
 		indiceChunkAtual = 0;
 		tamanhoConcluido = 0;
 		chunksDeDOM = [];
@@ -127,7 +130,7 @@ const LeitorDeVoz = (() => {
 	const pausarAutoscroll = () => {
 		usuarioAssumiuControle = true;
 		clearTimeout(temporizadorScroll);
-		
+
 		temporizadorScroll = setTimeout(() => {
 			usuarioAssumiuControle = false;
 		}, 3000);
@@ -144,7 +147,7 @@ const LeitorDeVoz = (() => {
 		chunk.elemento.innerHTML = `${antes}<mark id="palavra-ativa" style="background-color: #ffeb3b; color: #000; border-radius: 4px; box-shadow: 0 0 0 2px #ffeb3b;">${palavra}</mark>${depois}`;
 
 		const marca = document.getElementById("palavra-ativa");
-		
+
 		if (marca && !usuarioAssumiuControle) {
 			const rect = marca.getBoundingClientRect();
 			const alturaJanela = window.innerHeight;
@@ -163,7 +166,7 @@ const LeitorDeVoz = (() => {
 
 	const tocarProximoChunk = () => {
 		// Proteção caso a fila tente avançar após o utilizador clicar em reiniciar
-		if (estadoAudio === "parado") return; 
+		if (estadoAudio === "parado") return;
 
 		if (indiceChunkAtual >= chunksDeDOM.length) {
 			reiniciarAudio();
@@ -186,9 +189,9 @@ const LeitorDeVoz = (() => {
 
 		enunciando.onend = () => {
 			// Escudo contra o evento "onend" fantasma que o Chrome dispara ao dar cancel()
-			if (estadoAudio === "parado") return; 
+			if (estadoAudio === "parado") return;
 
-			restaurarTextoAtual(); 
+			restaurarTextoAtual();
 			tamanhoConcluido += chunk.textoBruto.length;
 			indiceChunkAtual++;
 			tocarProximoChunk();
@@ -236,7 +239,7 @@ const LeitorDeVoz = (() => {
 			tamanhoTotalTexto = chunksDeDOM.reduce((acc, curr) => acc + curr.textoBruto.length, 0);
 		}
 
-		if (chunksDeDOM.length === 0) return; 
+		if (chunksDeDOM.length === 0) return;
 
 		estadoAudio = "tocando";
 		UI.restartButton?.classList.add("active");
@@ -285,7 +288,7 @@ const AuxilioLeitura = (() => {
 		if (!ativo || !elementoAuxilio || !UI.texto) return;
 
 		const rect = UI.texto.getBoundingClientRect();
-		
+
 		// Move a linha (baseado em posição fixa via CSS)
 		elementoAuxilio.style.transform = `translate(-50%, ${mouseY}px)`;
 
@@ -318,10 +321,10 @@ const AuxilioLeitura = (() => {
 			UI.body.insertAdjacentHTML('beforeend', '<div id="elementoAuxilioLeitura"><div class="triangulo"></div></div>');
 			elementoAuxilio = document.getElementById("elementoAuxilioLeitura");
 			triangulo = elementoAuxilio.querySelector(".triangulo");
-			
+
 			UI.body.style.cursor = "none";
 			window.addEventListener("mousemove", atualizarCoordenadasMouse, { passive: true });
-			
+
 			// Inicia o motor de renderização fluida de 60 FPS
 			animationFrameId = requestAnimationFrame(renderizarRégua);
 		}
@@ -407,6 +410,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	LeitorDeVoz.inicializar();
 	AuxilioLeitura.inicializar();
 	LayoutInterativo.inicializar();
+	gerenciarModais();
 });
 
 window.addEventListener("load", () => {
@@ -414,3 +418,59 @@ window.addEventListener("load", () => {
 		ScrollController.scrollTo("#conteudo");
 	}
 });
+
+const gerenciarModais = () => {
+	const fechar = (modal) => {
+		if (!modal) return;
+		modal.classList.add("fechar-modal");
+		setTimeout(() => modal.classList.remove("fechar-modal", "modal-aberto"), 250);
+	};
+
+	const abrir = (modal) => {
+		if (!modal) return;
+		modal.classList.add("modal-aberto");
+		const primeiroFocavel = modal.querySelector(".link-banner, input, button, [tabindex='0']");
+		if (primeiroFocavel) primeiroFocavel.focus();
+	};
+
+	UI.botoesAbrirModal.forEach((botao) => {
+		botao.addEventListener("click", () => {
+			const id = botao.getAttribute("data-abrir-modal");
+			const modal = document.getElementById(id);
+
+			if (id === "modalImagemNoticia" && modal) {
+				const imagemSelecionada = botao.querySelector(".imagem-parallax");
+				const imagemModal = modal.querySelector(".imagem-noticia");
+
+				if (imagemSelecionada && imagemModal) {
+					imagemModal.setAttribute("src", imagemSelecionada.getAttribute("src"));
+					imagemModal.setAttribute("alt", imagemSelecionada.getAttribute("alt") || "");
+				}
+			}
+
+			abrir(modal);
+		});
+	});
+
+	UI.botoesFecharModal.forEach((botao) => {
+		botao.addEventListener("click", () => {
+			fechar(botao.closest(".modal-customizada"));
+		});
+	});
+
+	UI.modais.forEach((modal) => {
+		modal.addEventListener("click", (e) => {
+			if (e.target === e.currentTarget) fechar(modal);
+		});
+	});
+
+	// Fechar modal ao pressionar ESC
+	window.addEventListener("keydown", (e) => {
+		if (e.key === "Escape") {
+			const modalAberto = document.querySelector(".modal-customizada.modal-aberto");
+			if (modalAberto) fechar(modalAberto);
+		}
+	});
+};
+
+gerenciarModais();
