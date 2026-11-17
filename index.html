@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="pt-BR">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Compartilhamento de Notícia</title>
+		<link rel="stylesheet" href="style.css" />
+		<link rel="stylesheet" href="bibliotecas/swiper-bundle.min.css" />
+		<!-- Importação do html2canvas para gerar a imagem do elemento -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+		<script src="bibliotecas/swiper-bundle.min.js"></script>
+	</head>
+	<body>
+		<main class="conteudo-principal">
+			<!-- O elemento com id "cartaoNoticia" é o que será transformado em imagem -->
+			<article id="cartaoNoticia" class="cartao-noticia">
+				<div class="cartao-noticia-cabecalho">
+					<span class="cartao-noticia-etiqueta">Fundação Cultural</span>
+					<h1 class="cartao-noticia-titulo">Contagem Regressiva: A apenas 48 horas do lançamento de GTA VI</h1>
+				</div>
+
+				<!-- <img class="cartao-noticia-imagem" src="https://picsum.photos/400/300" alt="Professor em sala de aula" /> -->
+				<img class="cartao-noticia-imagem" src="capa-noticia.webp" alt="Professor em sala de aula" />
+
+				<div class="cartao-noticia-rodape">
+					<!-- <img class="cartao-noticia-icone" src="https://picsum.photos/40/40" alt="Logo Prefeitura" /> -->
+					<img class="cartao-noticia-icone" src="logo.webp" alt="Logo Prefeitura" />
+					<div class="cartao-noticia-autor">
+						<strong>Prefeitura de Criciúma</strong>
+						<span>FCC</span>
+					</div>
+				</div>
+			</article>
+
+			<div id="noticiaUnicaContainer" class="container">
+				<div class="container-botoes">
+					<button id="botaoCompartilhar" type="button" data-share-title="Contagem Regressiva: A apenas 48 horas do lançamento de GTA VI, febre do pré-download toma conta dos jogadores" aria-label="Compartilhar página" title="Compartilhar página">
+						<img src="share.svg" alt="Icone de Compartilhamento" />
+					</button>
+				</div>
+
+				<h1 class="titulo-noticia">Contagem Regressiva: A apenas 48 horas do lançamento de GTA VI, febre do pré-download toma conta dos jogadores</h1>
+				<h2 class="subtitulo-noticia">Após anos de espera e adiamentos, o aguardado título da Rockstar Games chega no dia 19 de novembro de 2026 para PS5 e Xbox Series X|S; jogadores de PC terão que esperar.</h2>
+
+				<div class="informacoes-noticia">
+					<h3 class="assunto">Games</h3>
+
+					<span class="escritores"> Data: 17/11/2026 - Escrito por: Gemini - Imagem: Divulgação u/artofrockstargames </span>
+				</div>
+
+				<!-- HTML do Swiper Parallax -->
+				<div class="swiper swiper-noticia-parallax swiper-initialized swiper-horizontal swiper-watch-progress swiper-backface-hidden">
+					<div class="swiper-wrapper" id="swiper-wrapper-310a19f4ba4fef79d" aria-live="polite">
+						<div class="swiper-slide botao-abrir-modal swiper-slide-visible swiper-slide-fully-visible swiper-slide-active swiper-slide-next" data-abrir-modal="modalImagemNoticia" role="group" aria-label="1 / 1" data-swiper-slide-index="0" style="width: 698px">
+							<div class="parallax-bg-wrapper">
+								<img src="capa-noticia.webp" alt="" class="imagem-parallax" data-swiper-parallax="20%" loading="lazy" style="transform: translate3d(0%, 0px, 0px)" />
+							</div>
+						</div>
+					</div>
+
+					<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+				</div>
+
+				<div class="player">
+					<div class="botoes">
+						<button id="playButton" class="material-symbols-rounded" title="Ler texto em voz alta" alt="Ler texto em voz alta"><img src="play_circle.svg" alt="Play" /></button>
+						<button id="restartButton" class="material-symbols-rounded" title="Reiniciar áudio" alt="Reiniciar áudio"><img src="replay.svg" alt="Replay" /></button>
+					</div>
+
+					<div id="progressContainer">
+						<div id="progressBar"></div>
+					</div>
+				</div>
+
+				<div id="texto">
+					<!-- Renderização do novo formato em blocos -->
+
+					<div class="bloco-paragrafo"><p>O momento que a indústria dos videogames aguarda há mais de uma década finalmente chegou. A apenas dois dias do seu lançamento oficial, marcado para esta quinta-feira, 19 de novembro de 2026, o período de pré-lançamento de Grand Theft Auto VI (GTA VI) tem movimentado a comunidade global em níveis sem precedentes.</p></div>
+
+					<div class="bloco-paragrafo"><p>Uma longa jornada até LeonidaAnunciado originalmente no final de 2023 com uma janela de lançamento para 2025, GTA VI enfrentou dois adiamentos significativos. A data foi movida primeiro para maio de 2026, até ser finalmente cravada para 19 de novembro do mesmo ano. A ansiedade é palpável, especialmente com a confirmação de que o jogo levará os jogadores de volta à ensolarada Vice City, agora parte do vasto estado de Leonida, na pele da inédita dupla de protagonistas, Jason e Lucia.</p></div>
+
+					<div class="bloco-paragrafo"><p>O desafio do armazenamento e o pré-downloadPara garantir que todos estejam prontos quando o relógio bater meia-noite, a Rockstar Games liberou o pré-download digital no último dia 10 de novembro. A grande surpresa, no entanto, ficou por conta do tamanho colossal do arquivo: os jogadores precisam reservar até 212 GB de espaço no armazenamento de seus consoles para acomodar o blockbuster. Nas redes sociais, relatos de pessoas apagando grande parte de suas bibliotecas de jogos no PlayStation 5 e Xbox Series X|S são constantes nas últimas semanas.</p></div>
+
+					<h2 class="titulo">Lançamento à meia-noite e o famoso "Truque da Nova Zelândia"</h2>
+
+					<div class="bloco-paragrafo"><p>O jogo será desbloqueado exatamente à meia-noite do horário local de cada região. No Brasil, os fãs poderão iniciar sua jornada pelo submundo criminoso de Leonida à 00h (horário de Brasília) do dia 19 de novembro.</p></div>
+
+					<div class="bloco-paragrafo"><p>Como o lançamento é escalonado globalmente, as regiões da Nova Zelândia e da Austrália serão as primeiras do mundo a ter acesso ao título, graças ao seu fuso horário. Essa janela reacendeu o uso do famoso "truque da Nova Zelândia", principalmente entre os jogadores de Xbox, que alteram a região do sistema de seus consoles para conseguir acessar o jogo horas antes do desbloqueio oficial em seus países de origem.</p></div>
+
+					<h2 class="titulo">Jogadores de PC ficam de fora (por enquanto)</h2>
+
+					<div class="bloco-paragrafo"><p>Enquanto os donos de consoles da atual geração celebram o iminente lançamento, a comunidade de PC continua no escuro. A Rockstar manteve sua tradição de mercado e, até o momento, não anunciou nenhuma data para a chegada de GTA VI aos computadores. A expectativa de analistas e fãs é que, assim como ocorreu com GTA V, a versão para PC chegue entre um e dois anos após a estreia nos consoles.</p></div>
+
+					<div class="bloco-paragrafo"><p>Com um escopo técnico massivo, promessas de um sistema avançado de policiamento criminal (Wanted Level) e uma forte ênfase na narrativa de sua nova dupla, as últimas 48 horas de espera coroam GTA VI como o maior e mais aguardado evento de entretenimento do ano. Resta apenas aguardar as horas finais no relógio.</p></div>
+				</div>
+
+				<div class="pin-spacer" style="order: 0; place-self: auto; grid-area: auto; z-index: auto; float: none; flex-shrink: 1; display: block; margin: 0px 60px 16px; inset: 232px 1500.64px 1750.95px 0px; position: absolute; flex-basis: auto; overflow: visible; box-sizing: border-box; width: 243px; height: 1292px; padding: 0px 0px 1208px"><p class="aviso-leitura mt-4" style="translate: none; rotate: none; scale: none; opacity: 1; left: 60px; top: 898.797px; margin: 0px; max-width: 244px; width: 244px; max-height: 84px; height: 84px; padding: 30px 0px; box-sizing: border-box; position: fixed; transform: translate(0px, 0px)">Pressione "L" para habilitar o modo leitura</p></div>
+			</div>
+
+			<section class="texto-complementar">
+				<p>Este texto faz parte da página web, mas está de fora do cartão principal. Portanto, quando o usuário clicar em compartilhar, apenas o bloco branco acima será transformado em imagem e enviado para o Instagram.</p>
+			</section>
+		</main>
+
+		<div id="modalImagemNoticia" class="modal-customizada">
+			<div class="container-modal">
+				<button type="button" class="botao-fechar-modal material-symbols-rounded" aria-label="Fechar modal">close</button>
+				<img src="/media/e806785b553ba668fba3a0f26d472d4f" alt="" class="imagem-noticia imagem-principal" />
+			</div>
+		</div>
+	</body>
+</html>
+
+<script src="script.js"></script>
