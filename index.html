@@ -4,7 +4,7 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Compartilhamento de Notícia</title>
-		<link rel="stylesheet" href="style.css" />
+		<link rel="stylesheet" href="assets/css/style.css" />
 		<link rel="stylesheet" href="bibliotecas/swiper-bundle.min.css" />
 		<!-- Importação do html2canvas para gerar a imagem do elemento -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
@@ -19,12 +19,12 @@
 					<h1 class="cartao-noticia-titulo">Contagem Regressiva: A apenas 48 horas do lançamento de GTA VI</h1>
 				</div>
 
-				<!-- <img class="cartao-noticia-imagem" src="https://picsum.photos/400/300" alt="Professor em sala de aula" /> -->
-				<img class="cartao-noticia-imagem" src="capa-noticia.webp" alt="Professor em sala de aula" />
+				<!-- <img class="cartao-noticia-imagem" src="https://picsum.photos/400/300" alt="imagem aleatoria" /> -->
+				<img class="cartao-noticia-imagem" src="assets/img/capa-noticia.webp" alt="GTA 6" />
 
 				<div class="cartao-noticia-rodape">
-					<!-- <img class="cartao-noticia-icone" src="https://picsum.photos/40/40" alt="Logo Prefeitura" /> -->
-					<img class="cartao-noticia-icone" src="logo.webp" alt="Logo Prefeitura" />
+					<!-- <img class="cartao-noticia-icone" src="https://picsum.photos/40/40" alt="imagem aleatoria" /> -->
+					<img class="cartao-noticia-icone" src="assets/img/logo.webp" alt="Logo Prefeitura" />
 					<div class="cartao-noticia-autor">
 						<strong>Prefeitura de Criciúma</strong>
 						<span>FCC</span>
@@ -35,7 +35,7 @@
 			<div id="noticiaUnicaContainer" class="container">
 				<div class="container-botoes">
 					<button id="botaoCompartilhar" type="button" data-share-title="Contagem Regressiva: A apenas 48 horas do lançamento de GTA VI, febre do pré-download toma conta dos jogadores" aria-label="Compartilhar página" title="Compartilhar página">
-						<img src="share.svg" alt="Icone de Compartilhamento" />
+						<img src="assets/img/share.svg" alt="Icone de Compartilhamento" />
 					</button>
 				</div>
 
@@ -53,7 +53,7 @@
 					<div class="swiper-wrapper" id="swiper-wrapper-310a19f4ba4fef79d" aria-live="polite">
 						<div class="swiper-slide botao-abrir-modal swiper-slide-visible swiper-slide-fully-visible swiper-slide-active swiper-slide-next" data-abrir-modal="modalImagemNoticia" role="group" aria-label="1 / 1" data-swiper-slide-index="0" style="width: 698px">
 							<div class="parallax-bg-wrapper">
-								<img src="capa-noticia.webp" alt="" class="imagem-parallax" data-swiper-parallax="20%" loading="lazy" style="transform: translate3d(0%, 0px, 0px)" />
+								<img src="assets/img/capa-noticia.webp" alt="" class="imagem-parallax" data-swiper-parallax="20%" loading="lazy" style="transform: translate3d(0%, 0px, 0px)" />
 							</div>
 						</div>
 					</div>
@@ -63,8 +63,8 @@
 
 				<div class="player">
 					<div class="botoes">
-						<button id="playButton" class="material-symbols-rounded" title="Ler texto em voz alta" alt="Ler texto em voz alta"><img src="play_circle.svg" alt="Play" /></button>
-						<button id="restartButton" class="material-symbols-rounded" title="Reiniciar áudio" alt="Reiniciar áudio"><img src="replay.svg" alt="Replay" /></button>
+						<button id="playButton" class="material-symbols-rounded" title="Ler texto em voz alta" alt="Ler texto em voz alta"><img src="assets/img/play_circle.svg" alt="Play" /></button>
+						<button id="restartButton" class="material-symbols-rounded" title="Reiniciar áudio" alt="Reiniciar áudio"><img src="assets/img/replay.svg" alt="Replay" /></button>
 					</div>
 
 					<div id="progressContainer">
@@ -105,10 +105,10 @@
 		<div id="modalImagemNoticia" class="modal-customizada">
 			<div class="container-modal">
 				<button type="button" class="botao-fechar-modal material-symbols-rounded" aria-label="Fechar modal">close</button>
-				<img src="/media/e806785b553ba668fba3a0f26d472d4f" alt="" class="imagem-noticia imagem-principal" />
+				<img src="assets/img/capa-noticia.webp" alt="" class="imagem-noticia imagem-principal" />
 			</div>
 		</div>
 	</body>
 </html>
 
-<script src="script.js"></script>
+<script src="assets/script/script.js"></script>

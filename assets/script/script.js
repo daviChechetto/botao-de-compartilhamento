@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     botaoCompartilhar.addEventListener("click", async () => {
         const icone = botaoCompartilhar.querySelector('img');
-        icone.src = "progress_activity.svg";
+        icone.src = "assets/img/progress_activity.svg";
         botaoCompartilhar.disabled = true;
 
         try {
@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     if (desejaBaixarImagem) {
                         const linkBaixar = document.createElement("a");
                         linkBaixar.href = URL.createObjectURL(arquivoBlob);
-                        linkBaixar.download = "noticia_criciuma_stories.png";
+                        linkBaixar.download = "/noticia_criciuma.png";
                         linkBaixar.click();
                     }
                 }
@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
             console.error("Erro durante o processo de geração do cartão:", erroGeral);
             alert("Não foi possível gerar a imagem para compartilhamento.");
         } finally {
-            icone.src = 'share.svg';
+            icone.src = 'assets/img/share.svg';
             botaoCompartilhar.disabled = false;
         }
     });
